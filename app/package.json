@@ -1,0 +1,15 @@
+{
+  "name": "server-sched",
+  "version": "1.0.0",
+  "description": "IPMI Server Control",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "sqlite3": "^5.0.2",
+    "node-cron": "^3.0.0",
+    "body-parser": "^1.19.0"
+  }
+}
