@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fleet Server Control</title>
+    <title>Server Power Manager</title>
     <style>
+        h1 {
+            grid-column: 1 / -1; /* Stretch across all columns */
+            text-align: center;
+            color: rgb(11, 5, 68);
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: rgb(206, 206, 206);
@@ -38,6 +43,7 @@
             border: 0px;
             padding: 0.5em;
             border-radius: 2px;
+            font-weight: bold;
         }
     </style>
     <script src="jquery.min.js"></script>
@@ -47,96 +53,96 @@
 <body>    
             
     <div class="container">
-        
+        <h1>Server Power Manager</h1>        
         <!-- Repetir este bloco para cada servidor -->
         <div class="server">
-            <input type="text" placeholder="Server Name" name="serverName">
+            <input type="text" placeholder="Server Name" name="serverName1">
             <input type="text" class="form-input" id="ipv4" name="ipv4" placeholder="Server IP"/>
             <input type="text" placeholder="Username" name="username">
-            <input type="password" placeholder="Password" name="password">
-            <input type="time" placeholder="Power On Time" name="powerOnTime">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime">
-            <button onclick="schedulePower('on', this.parentElement)">Start</button>
+            <input type="password" placeholder="Password" name="password1">
+            <input type="time" placeholder="Power On Time" name="powerOnTime1">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime1">
+            <button onclick="schedulePower('on', this.parentElement, 1, this)">Start</button>
         </div>
 
         <div class="server">
-            <input type="text" placeholder="Server Name" name="serverName">
+            <input type="text" placeholder="Server Name" name="serverName2">
             <input type="text" class="form-input" id="ipv4" name="ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username">
-            <input type="password" placeholder="Password" name="password">
-            <input type="time" placeholder="Power On Time" name="powerOnTime">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime">
-            <button onclick="schedulePower('on', this.parentElement)">Start</button>
+            <input type="text" placeholder="Username" name="username2">
+            <input type="password" placeholder="Password" name="password2">
+            <input type="time" placeholder="Power On Time" name="powerOnTime2">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime2">
+            <button onclick="schedulePower('on', this.parentElement, 2, this)">Start</button>
         </div>
 
         <div class="server">
-            <input type="text" placeholder="Server Name" name="serverName">
+            <input type="text" placeholder="Server Name" name="serverName3">
             <input type="text" class="form-input" id="ipv4" name="ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username">
-            <input type="password" placeholder="Password" name="password">
-            <input type="time" placeholder="Power On Time" name="powerOnTime">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime">
-            <button onclick="schedulePower('on', this.parentElement)">Start</button>
+            <input type="text" placeholder="Username" name="username3">
+            <input type="password" placeholder="Password" name="password3">
+            <input type="time" placeholder="Power On Time" name="powerOnTime3">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime3">
+            <button onclick="schedulePower('on', this.parentElement, 3, this)">Start</button>
         </div>
 
         <div class="server">
-            <input type="text" placeholder="Server Name" name="serverName">
+            <input type="text" placeholder="Server Name" name="serverName4">
             <input type="text" class="form-input" id="ipv4" name="ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username">
-            <input type="password" placeholder="Password" name="password">
-            <input type="time" placeholder="Power On Time" name="powerOnTime">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime">
-            <button onclick="schedulePower('on', this.parentElement)">Start</button>
+            <input type="text" placeholder="Username" name="username4">
+            <input type="password" placeholder="Password" name="password4">
+            <input type="time" placeholder="Power On Time" name="powerOnTime4">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime4">
+            <button onclick="schedulePower('on', this.parentElement, 4, this)">Start</button>
         </div>
 
         <div class="server">
-            <input type="text" placeholder="Server Name" name="serverName">
+            <input type="text" placeholder="Server Name" name="serverName5">
             <input type="text" class="form-input" id="ipv4" name="ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username">
-            <input type="password" placeholder="Password" name="password">
-            <input type="time" placeholder="Power On Time" name="powerOnTime">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime">
-            <button onclick="schedulePower('on', this.parentElement)">Start</button>
+            <input type="text" placeholder="Username" name="username5">
+            <input type="password" placeholder="Password" name="password5">
+            <input type="time" placeholder="Power On Time" name="powerOnTime5">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime5">
+            <button onclick="schedulePower('on', this.parentElement, 5, this)">Start</button>
         </div>
 
         <div class="server">
-            <input type="text" placeholder="Server Name" name="serverName">
+            <input type="text" placeholder="Server Name" name="serverName6">
             <input type="text" class="form-input" id="ipv4" name="ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username">
-            <input type="password" placeholder="Password" name="password">
-            <input type="time" placeholder="Power On Time" name="powerOnTime">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime">
-            <button onclick="schedulePower('on', this.parentElement)">Start</button>
+            <input type="text" placeholder="Username" name="username6">
+            <input type="password" placeholder="Password" name="password6">
+            <input type="time" placeholder="Power On Time" name="powerOnTime6">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime6">
+            <button onclick="schedulePower('on', this.parentElement, 6, this)">Start</button>
         </div>
 
         <div class="server">
-            <input type="text" placeholder="Server Name" name="serverName">
+            <input type="text" placeholder="Server Name" name="serverName7">
             <input type="text" class="form-input" id="ipv4" name="ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username">
-            <input type="password" placeholder="Password" name="password">
-            <input type="time" placeholder="Power On Time" name="powerOnTime">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime">
-            <button onclick="schedulePower('on', this.parentElement)">Start</button>
+            <input type="text" placeholder="Username" name="username7">
+            <input type="password" placeholder="Password" name="password7">
+            <input type="time" placeholder="Power On Time" name="powerOnTime7">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime7">
+            <button onclick="schedulePower('on', this.parentElement, 7, this)">Start</button>
         </div>
 
         <div class="server">
-            <input type="text" placeholder="Server Name" name="serverName">
+            <input type="text" placeholder="Server Name" name="serverName8">
             <input type="text" class="form-input" id="ipv4" name="ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username">
-            <input type="password" placeholder="Password" name="password">
-            <input type="time" placeholder="Power On Time" name="powerOnTime">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime">
-            <button onclick="schedulePower('on', this.parentElement)">Start</button>
+            <input type="text" placeholder="Username" name="username8">
+            <input type="password" placeholder="Password" name="password8">
+            <input type="time" placeholder="Power On Time" name="powerOnTime8">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime8">
+            <button onclick="schedulePower('on', this.parentElement, 8, this)">Start</button>
         </div>
 
         <div class="server">
-            <input type="text" placeholder="Server Name" name="serverName">
+            <input type="text" placeholder="Server Name" name="serverName9">
             <input type="text" class="form-input" id="ipv4" name="ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username">
-            <input type="password" placeholder="Password" name="password">
-            <input type="time" placeholder="Power On Time" name="powerOnTime">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime">
-            <button onclick="schedulePower('on', this.parentElement)">Start</button>
+            <input type="text" placeholder="Username" name="username9">
+            <input type="password" placeholder="Password" name="password9">
+            <input type="time" placeholder="Power On Time" name="powerOnTime9">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime9">
+            <button onclick="schedulePower('on', this.parentElement, 9, this)">Start</button>
         </div>
         <!-- Fim do bloco do servidor -->
     </div>
@@ -149,19 +155,32 @@
             greedy: false //The initial mask shown will be "" instead of "-____".
         });
 
-        async function schedulePower(action, serverDiv) {
-            const serverIp = serverDiv.querySelector('[name="serverIp"]').value;
+        async function schedulePower(action, serverDiv, serverNumber, button) {
+            // Alternar entre os estados com base no texto atual do botão
+            if (button.textContent === 'Start') {
+                button.textContent = 'Running'; // Muda o texto para "Running"
+                button.style.backgroundColor = '#0acda2'; // Muda a cor para verde
+            } else {
+                button.textContent = 'Start'; // Volta para "Start"
+                button.style.backgroundColor = '#0a06e9'; // Cor azul original
+                return; // Retorna para evitar executar ações desnecessárias
+            }
+
+            const serverIp = serverDiv.querySelector(`[name="ipv4${serverNumber}"]`).value;
             if (!/^(\d{1,3}\.){3}\d{1,3}$/.test(serverIp)) {
                 alert("Please enter a valid IP address.");
+                button.textContent = 'Start'; // Restaura o texto para "Start"
+                button.style.backgroundColor = '#0a06e9'; // Restaura a cor original
                 return;
             }
-            const username = serverDiv.querySelector('[name="username"]').value;
-            const password = serverDiv.querySelector('[name="password"]').value;
-            const powerOnTime = serverDiv.querySelector('[name="powerOnTime"]').value;
-            const powerOffTime = serverDiv.querySelector('[name="powerOffTime"]').value;
+
+            const username = serverDiv.querySelector(`[name="username${serverNumber}"]`).value;
+            const password = serverDiv.querySelector(`[name="password${serverNumber}"]`).value;
+            const powerOnTime = serverDiv.querySelector(`[name="powerOnTime${serverNumber}"]`).value;
+            const powerOffTime = serverDiv.querySelector(`[name="powerOffTime${serverNumber}"]`).value;
 
             const serverData = {
-                server_name: serverDiv.querySelector('[name="serverName"]').value,
+                server_name: serverDiv.querySelector(`[name="serverName${serverNumber}"]`).value,
                 server_ip: serverIp,
                 username: username,
                 password: password,
@@ -169,16 +188,28 @@
                 power_off_time: action === 'off' ? powerOffTime : null,
             };
 
-            const response = await fetch('/schedule', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(serverData),
-            });
+            try {
+                const response = await fetch('/schedule', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(serverData),
+                });
 
-            const data = await response.json();
-            alert(data.message || data.error);
+                const data = await response.json();
+                if (!data.success) {
+                    throw new Error(data.message);
+                }
+
+                // Após a operação bem-sucedida, volta ao estado "Start" para a próxima interação
+                button.textContent = 'Start'; 
+                button.style.backgroundColor = '#0a06e9';
+            } catch (error) {
+                alert(error.message || "Failed to update server status.");
+                button.textContent = 'Start'; // Restaura o texto para "Start"
+                button.style.backgroundColor = '#0a06e9'; // Restaura a cor original
+            }
         }
     </script>
 </body>
