@@ -4,14 +4,14 @@ const exec = require('child_process').exec;
 function ipmiCommand(server_ip, username, password, command) {
   const cmd = `ipmitool -I lanplus -H ${server_ip} -U ${username} -P ${password} ${command}`;
   
-  console.log(`Preparando para executar comando: ${comannd}`);
+  console.log(`Preparando para executar comando: ${command}`);
 
   exec(cmd, (error, stdout, stderr) => {
     if (error) {
       console.error(`Erro na execução do comando: ${error.message}`);
       return;
     }
-    console.log(`Comando executado com sucesso: ${comannd}`);
+    console.log(`Comando executado com sucesso: ${command}`);
     console.log(`Saída: ${stdout}`);
     if (stderr) {
       console.error(`Erro padrão: ${stderr}`);

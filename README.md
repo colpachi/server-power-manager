@@ -1,5 +1,5 @@
 build:
-```docker build -t ipmi-control .```
+```docker build -t server-sched .```
 
 run:
-```docker run -p 5000:5000 ipmi-control```
+```docker run -d -p 5000:5000 -v "$(pwd)/data:/app/data" server-sched```
