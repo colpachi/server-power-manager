@@ -14,11 +14,49 @@ const db = new sqlite3.Database(dbPath, (err) => {
 });
 
 db.serialize(() => {
-  db.run('CREATE TABLE IF NOT EXISTS schedule (id INTEGER PRIMARY KEY AUTOINCREMENT, server_name TEXT, server_ip TEXT, username TEXT, password TEXT, power_on_time TEXT, power_off_time TEXT)');
+  db.run('CREATE TABLE IF NOT EXISTS schedule (id INTEGER PRIMARY KEY, server_name TEXT, server_ip TEXT, username TEXT, password TEXT, power_on_time TEXT, power_off_time TEXT)');
 });
 
-exports.insertSchedule = (server_name, server_ip, username, password, power_on_time, power_off_time) => {
-  const stmt = db.prepare('INSERT INTO schedule (server_name, server_ip, username, password, power_on_time, power_off_time) VALUES (?, ?, ?, ?, ?, ?)');
-  stmt.run(server_name, server_ip, username, password, power_on_time, power_off_time);
-  stmt.finalize();
+exports.insertSchedule = async (id, server_name, server_ip, username, password, power_on_time, power_off_time) => {
+  // Verifica primeiro se o registro com o ID fornecido já existe
+  db.get("SELECT id FROM schedule WHERE id = ?", [id], (err, row) => {
+    if (err) {
+      console.error("Erro ao verificar agendamento existente:", err.message);
+      return;
+    }
+
+    if (row) {
+      // Se encontrar o registro, atualiza
+      const updateStmt = db.prepare('UPDATE schedule SET server_name = ?, server_ip = ?, username = ?, password = ?, power_on_time = ?, power_off_time = ? WHERE id = ?');
+      updateStmt.run(server_name, server_ip, username, password, power_on_time, power_off_time, id, function(err) {
+        if (err) {
+          console.error('Erro ao atualizar agendamento:', err.message);
+        } else {
+          console.log('Agendamento atualizado com sucesso.');
+        }
+        updateStmt.finalize();
+      });
+    } else {
+      // Se não encontrar, insere um novo
+      const insertStmt = db.prepare('INSERT INTO schedule (id, server_name, server_ip, username, password, power_on_time, power_off_time) VALUES (?, ?, ?, ?, ?, ?, ?)');
+      insertStmt.run(id, server_name, server_ip, username, password, power_on_time, power_off_time, function(err) {
+        if (err) {
+          console.error('Erro ao inserir agendamento:', err.message);
+        } else {
+          console.log('Agendamento inserido com sucesso.');
+        }
+        insertStmt.finalize();
+      });
+    }
+  });
+};
+
+exports.getSchedules = (callback) => {
+  db.all('SELECT * FROM schedule ORDER BY id', [], (err, rows) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, rows);
+    }
+  });
 };
