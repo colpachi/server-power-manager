@@ -185,7 +185,20 @@
         serverDiv.querySelector(".status-message").textContent = "";
     }
 
+        //input mask bundle ip address
+        // var ipv4_address = $(`#ipv4-${serverNumber}`);
+        // ipv4_address.inputmask({
+        //     alias: "ip",
+        //     greedy: false
+        // });
+
         $(document).ready(function() {
+
+            $(".form-input").inputmask({
+                alias: "ip",
+                greedy: false
+            });
+
             fetch('/schedules')
                 .then(response => response.json())
                 .then(data => {
