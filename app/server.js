@@ -2,23 +2,32 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const scheduleRoutes = require('./routes/schedule');
 const path = require('path');
-const { getSchedules } = require('./db');
+const sqlite3 = require('sqlite3').verbose();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Abre o banco de dados
+const dbPath = path.join(__dirname, 'data', 'schedule.db');
+const db = new sqlite3.Database(dbPath);
+
 app.use(bodyParser.json());
+
+// Middleware para servir arquivos estáticos na pasta "views"
 app.use(express.static(path.join(__dirname, '../views')));
 
-// Rota para buscar agendamentos na inicialização
+// Rota para renderizar o arquivo index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/index.html'));
+});
+
+// Rota para buscar os agendamentos
 app.get('/schedules', (req, res) => {
-  console.log('Solicitação recebida para buscar agendamentos.');
-  getSchedules((err, rows) => {
+  db.all('SELECT * FROM schedule', (err, rows) => {
     if (err) {
-      console.error('Erro ao buscar dados do banco de dados:', err.message);
-      return res.status(500).json({ error: err.message });
+      res.status(500).json({ error: err.message });
+      return;
     }
-    console.log(`Agendamentos encontrados: ${rows.length} registros.`);
     res.json({ schedules: rows });
   });
 });

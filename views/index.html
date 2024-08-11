@@ -45,6 +45,9 @@
             border-radius: 2px;
             font-weight: bold;
         }
+        .clear-btn{
+            background-color: darkorchid;
+        }
         .status-message {
             color: blue; 
             font-weight: bold;
@@ -61,138 +64,161 @@
     <div class="container">
         <h1>Server Power Manager</h1>        
         <!-- Repetir este bloco para cada servidor -->
-        <div class="server">
+        <div class="server" id="server-1">
             <div class="status-message"></div>
-            <input type="text" placeholder="Server Name" name="serverName1">
-            <input type="text" class="form-input" id="1ipv4" name="1-ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username1">
-            <input type="password" placeholder="Password" name="password1">
-            <input type="time" placeholder="Power On Time" name="powerOnTime1">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime1">
+            <input type="text" placeholder="Server Name" id="serverName1">
+            <input type="text" class="form-input" id="ipv4-1" name="1-ipv4" placeholder="Server IP"/>
+            <input type="text" placeholder="Username" name="username1" id="username1">
+            <input type="password" placeholder="Password" name="password1" id="password1">
+            <input type="time" placeholder="Power On Time" name="powerOnTime1" id="powerOnTime1">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime1" id="powerOffTime1">
             <button onclick="toggleServer(this.parentElement, 1, this)">Start</button>
+            <button class="clear-btn" onclick="">Clear</button>
         </div>
 
-        <div class="server">
+        <div class="server" id="server-2">
             <div class="status-message"></div>
-            <input type="text" placeholder="Server Name" name="serverName2">
-            <input type="text" class="form-input" id="2ipv4" name="2-ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username2">
-            <input type="password" placeholder="Password" name="password2">
-            <input type="time" placeholder="Power On Time" name="powerOnTime2">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime2">
+            <input type="text" placeholder="Server Name" id="serverName2">
+            <input type="text" class="form-input" id="ipv4-2" name="2-ipv4" placeholder="Server IP"/>
+            <input type="text" placeholder="Username" name="username2" id="username2">
+            <input type="password" placeholder="Password" name="password2" id="password2">
+            <input type="time" placeholder="Power On Time" name="powerOnTime2" id="powerOnTime2">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime2" id="powerOffTime2">
             <button onclick="toggleServer(this.parentElement, 2, this)">Start</button>
+            <button class="clear-btn" onclick="">Clear</button>
         </div>
 
-        <div class="server">
+        <div class="server" id="server-3">
             <div class="status-message"></div>
-            <input type="text" placeholder="Server Name" name="serverName3">
-            <input type="text" class="form-input" id="3ipv4" name="3-ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username3">
-            <input type="password" placeholder="Password" name="password3">
-            <input type="time" placeholder="Power On Time" name="powerOnTime3">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime3">
+            <input type="text" placeholder="Server Name" id="serverName3">
+            <input type="text" class="form-input" id="ipv4-3" name="3-ipv4" placeholder="Server IP"/>
+            <input type="text" placeholder="Username" name="username3" id="username3">
+            <input type="password" placeholder="Password" name="password3" id="password3">
+            <input type="time" placeholder="Power On Time" name="powerOnTime3" id="powerOnTime3">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime3" id="powerOffTime3">
             <button onclick="toggleServer(this.parentElement, 3, this)">Start</button>
+            <button class="clear-btn" onclick="">Clear</button>
         </div>
 
-        <div class="server">
+        <div class="server" id="server-4">
             <div class="status-message"></div>
-            <input type="text" placeholder="Server Name" name="serverName4">
-            <input type="text" class="form-input" id="4ipv4" name="4-ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username4">
-            <input type="password" placeholder="Password" name="password4">
-            <input type="time" placeholder="Power On Time" name="powerOnTime4">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime4">
+            <input type="text" placeholder="Server Name" id="serverName4">
+            <input type="text" class="form-input" id="ipv4-4" name="4-ipv4" placeholder="Server IP"/>
+            <input type="text" placeholder="Username" name="username4" id="username4">
+            <input type="password" placeholder="Password" name="password4" id="password4">
+            <input type="time" placeholder="Power On Time" name="powerOnTime4" id="powerOnTime4">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime4" id="powerOffTime4">
             <button onclick="toggleServer(this.parentElement, 4, this)">Start</button>
+            <button class="clear-btn" onclick="">Clear</button>
         </div>
 
-        <div class="server">
+        <div class="server" id="server-5">
             <div class="status-message"></div>
-            <input type="text" placeholder="Server Name" name="serverName5">
-            <input type="text" class="form-input" id="5ipv4" name="5-ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username5">
+            <input type="text" placeholder="Server Name" id="serverName5">
+            <input type="text" class="form-input" id="ipv4-5" name="5-ipv4" placeholder="Server IP"/>
+            <input type="text" placeholder="Username" name="username5" id="username5" id="password5">
             <input type="password" placeholder="Password" name="password5">
-            <input type="time" placeholder="Power On Time" name="powerOnTime5">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime5">
+            <input type="time" placeholder="Power On Time" name="powerOnTime5" id="powerOnTime5">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime5" id="powerOffTime5">
             <button onclick="toggleServer(this.parentElement, 5, this)">Start</button>
+            <button class="clear-btn" onclick="">Clear</button>
         </div>
 
-        <div class="server">
+        <div class="server" id="server-6">
             <div class="status-message"></div>
-            <input type="text" placeholder="Server Name" name="serverName6">
-            <input type="text" class="form-input" id="6ipv4" name="6-ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username6">
-            <input type="password" placeholder="Password" name="password6">
-            <input type="time" placeholder="Power On Time" name="powerOnTime6">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime6">
+            <input type="text" placeholder="Server Name" id="serverName6">
+            <input type="text" class="form-input" id="ipv4-6" name="6-ipv4" placeholder="Server IP"/>
+            <input type="text" placeholder="Username" name="username6" id="username6">
+            <input type="password" placeholder="Password" name="password6" id="password6">
+            <input type="time" placeholder="Power On Time" name="powerOnTime6" id="powerOnTime6">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime6" id="powerOffTime6">
             <button onclick="toggleServer(this.parentElement, 6, this)">Start</button>
+            <button class="clear-btn" onclick="">Clear</button>
         </div>
 
-        <div class="server">
+        <div class="server" id="server-7">
             <div class="status-message"></div>
-            <input type="text" placeholder="Server Name" name="serverName7">
-            <input type="text" class="form-input" id="7ipv4" name="7-ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username7">
-            <input type="password" placeholder="Password" name="password7">
-            <input type="time" placeholder="Power On Time" name="powerOnTime7">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime7">
+            <input type="text" placeholder="Server Name" id="serverName7">
+            <input type="text" class="form-input" id="ipv4-7" name="7-ipv4" placeholder="Server IP"/>
+            <input type="text" placeholder="Username" name="username7" id="username7">
+            <input type="password" placeholder="Password" name="password7" id="password7">
+            <input type="time" placeholder="Power On Time" name="powerOnTime7" id="powerOnTime7">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime7" id="powerOffTime7">
             <button onclick="toggleServer(this.parentElement, 7, this)">Start</button>
+            <button class="clear-btn" onclick="">Clear</button>
         </div>
 
-        <div class="server">
+        <div class="server" id="server-8">
             <div class="status-message"></div>
-            <input type="text" placeholder="Server Name" name="serverName8">
-            <input type="text" class="form-input" id="8ipv4" name="8-ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username8">
-            <input type="password" placeholder="Password" name="password8">
-            <input type="time" placeholder="Power On Time" name="powerOnTime8">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime8">
+            <input type="text" placeholder="Server Name" id="serverName8">
+            <input type="text" class="form-input" id="ipv4-8" name="8-ipv4" placeholder="Server IP"/>
+            <input type="text" placeholder="Username" name="username8" id="username8">
+            <input type="password" placeholder="Password" name="password8" id="password8">
+            <input type="time" placeholder="Power On Time" name="powerOnTime8" id="powerOnTime8">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime8" id="powerOffTime8">
             <button onclick="toggleServer(this.parentElement, 8, this)">Start</button>
+            <button class="clear-btn" onclick="">Clear</button>
         </div>
 
-        <div class="server">
+        <div class="server" id="server-9">
             <div class="status-message"></div>
-            <input type="text" placeholder="Server Name" name="serverName9">
-            <input type="text" class="form-input" id="9ipv4" name="9-ipv4" placeholder="Server IP"/>
-            <input type="text" placeholder="Username" name="username9">
-            <input type="password" placeholder="Password" name="password9">
-            <input type="time" placeholder="Power On Time" name="powerOnTime9">
-            <input type="time" placeholder="Power Off Time" name="powerOffTime9">
+            <input type="text" placeholder="Server Name" id="serverName9">
+            <input type="text" class="form-input" id="ipv4-9" name="9-ipv4" placeholder="Server IP"/>
+            <input type="text" placeholder="Username" name="username9" id="username9">
+            <input type="password" placeholder="Password" name="password9" id="password9">
+            <input type="time" placeholder="Power On Time" name="powerOnTime9" id="powerOnTime9">
+            <input type="time" placeholder="Power Off Time" name="powerOffTime9" id="powerOffTime9">
             <button onclick="toggleServer(this.parentElement, 9, this)">Start</button>
+            <button class="clear-btn" onclick="">Clear</button>
         </div>
         <!-- Fim do bloco do servidor -->
     </div>
     <script>
+
         $(document).ready(function() {
-        // Seleciona elementos cujos IDs são '1ipv4', '2ipv4', ..., '9ipv4'
-            $("input[id$='ipv4'][id^='1'], input[id$='ipv4'][id^='2'], input[id$='ipv4'][id^='3'], input[id$='ipv4'][id^='4'], input[id$='ipv4'][id^='5'], input[id$='ipv4'][id^='6'], input[id$='ipv4'][id^='7'], input[id$='ipv4'][id^='8'], input[id$='ipv4'][id^='9']").inputmask({
-                alias: "ip",
-                greedy: false // The initial mask shown will be "" instead of "-____".
-            });
+            fetch('/schedules')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.schedules && data.schedules.length > 0) {
+                        data.schedules.forEach((schedule, index) => {
+                            // Determina o ID baseado no índice
+                            const serverNumber = index + 1;
+
+                            // Preenche cada campo correspondente ao servidor
+                            const serverNameInput = document.getElementById(`serverName${serverNumber}`);
+                            const serverIpInput = document.getElementById(`ipv4-${serverNumber}`);
+                            const usernameInput = document.getElementById(`username${serverNumber}`);
+                            const passwordInput = document.getElementById(`password${serverNumber}`);
+                            const powerOnTimeInput = document.getElementById(`powerOnTime${serverNumber}`);
+                            const powerOffTimeInput = document.getElementById(`powerOffTime${serverNumber}`);
+                            
+                            if (serverNameInput) serverNameInput.value = schedule.server_name || "";
+                            if (serverIpInput) serverIpInput.value = schedule.server_ip || "";
+                            if (usernameInput) usernameInput.value = schedule.username || "";
+                            if (passwordInput) passwordInput.value = schedule.password || "";
+                            if (powerOnTimeInput) powerOnTimeInput.value = schedule.power_on_time || "";
+                            if (powerOffTimeInput) powerOffTimeInput.value = schedule.power_off_time || "";
+                        });
+                    }
+                })
+                .catch(error => console.error('Erro ao buscar agendamentos:', error));
         });
 
         async function toggleServer(serverDiv, serverNumber, button) {
             const isStarting = button.textContent === 'Start';
-            const serverName = serverDiv.querySelector(`[name="serverName${serverNumber}"]`).value;
-            const serverIp = serverDiv.querySelector(`[name="${serverNumber}-ipv4"]`).value;
-            const username = serverDiv.querySelector(`[name="username${serverNumber}"]`).value;
-            const password = serverDiv.querySelector(`[name="password${serverNumber}"]`).value;
-            const powerOnTime = serverDiv.querySelector(`[name="powerOnTime${serverNumber}"]`).value;
-            const powerOffTime = serverDiv.querySelector(`[name="powerOffTime${serverNumber}"]`).value;
+            const serverName = serverDiv.querySelector(`#serverName${serverNumber}`).value;
+            const serverIp = serverDiv.querySelector(`#ipv4-${serverNumber}`).value;
+            const username = serverDiv.querySelector(`#username${serverNumber}`).value;
+            const password = serverDiv.querySelector(`#password${serverNumber}`).value;
+            const powerOnTime = serverDiv.querySelector(`#powerOnTime${serverNumber}`).value;
+            const powerOffTime = serverDiv.querySelector(`#powerOffTime${serverNumber}`).value;
             const statusMessageDiv = serverDiv.querySelector(".status-message");
 
-            // Verificação dos campos obrigatórios
-            if (!serverName || !serverIp || !username || !password) {
+            if (!serverName || !serverIp || !username || !password || (!powerOnTime && !powerOffTime)) {
                 statusMessageDiv.textContent = "Please fill all fields.";
                 return;
             }
 
-            // Verificação se pelo menos um dos campos de horário está preenchido
-            if (!powerOnTime && !powerOffTime) {
-                statusMessageDiv.textContent = "Please set Power On or Off time.";
-                return;
-            }
-
-            // Preparar os dados para envio
             const serverData = {
                 server_name: serverName,
                 server_ip: serverIp,
@@ -202,9 +228,8 @@
                 power_off_time: powerOffTime,
             };
 
-            console.log("Enviando dados:", serverData);  // Adicionar log para debugar
+            console.log("Enviando dados:", serverData);
 
-            // Realizar a requisição
             try {
                 const response = await fetch('/schedule', {
                     method: 'POST',
@@ -215,20 +240,19 @@
                 });
 
                 const data = await response.json();
-                console.log("Resposta recebida:", data);  // Log para verificar a resposta
+                console.log("Resposta recebida:", data);
 
                 if (!data.success) {
                     statusMessageDiv.textContent = data.message || "Action failed";
                     throw new Error(data.message || "Action failed");
                 }
 
-                // Atualizar o estado do botão após sucesso
                 button.textContent = isStarting ? 'Running' : 'Start';
                 button.style.backgroundColor = isStarting ? '#0acda2' : '#0a06e9';
                 statusMessageDiv.textContent = isStarting ? "Host acessível" : "";
             } catch (error) {
                 console.error("Erro ao realizar ação:", error);
-                button.textContent = 'Start'; // Restaurar para estado inicial em caso de erro
+                button.textContent = 'Start';
                 button.style.backgroundColor = '#0a06e9';
             }
         }

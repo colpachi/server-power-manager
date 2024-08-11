@@ -5,7 +5,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - app-data:/app/data
+      - ./app/data:/app/data # Mapeia o diretório data no host para o diretório /app/data no contêiner
 
 volumes:
   app-data:

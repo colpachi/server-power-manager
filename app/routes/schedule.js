@@ -5,7 +5,7 @@ const { schedulePowerOn, schedulePowerOff } = require('../scheduler');
 const ping = require('ping');
 
 router.post('/', async (req, res) => {
-  const { server_ip, username, password, power_on_time, power_off_time } = req.body;
+  const { server_name, server_ip, username, password, power_on_time, power_off_time } = req.body;
 
   if (!server_ip || !username || !password) {
     console.error('Dados faltando na requisição:', req.body);
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
 
     console.log(`Host ${server_ip} alcançado`);
 
-    db.insertSchedule(server_ip, username, password, power_on_time, power_off_time);
+    db.insertSchedule(server_name, server_ip, username, password, power_on_time, power_off_time);
 
     if (power_on_time) {
       console.log(`Agendando power on para ${server_ip} às ${power_on_time}`);
