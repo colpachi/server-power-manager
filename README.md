@@ -74,7 +74,7 @@ docker-compose up --build
 
 After starting the server, you can access the application through a browser at the following address:
 ```
-http://localhost:5000
+http://localhost:7050
 ```
 
 ## Using the Application
