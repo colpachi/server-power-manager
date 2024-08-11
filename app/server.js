@@ -6,7 +6,7 @@ const sqlite3 = require('sqlite3').verbose();
 const cron = require('./cron');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 7050;
 
 const dbPath = path.join(__dirname, 'data', 'schedule.db');
 const db = new sqlite3.Database(dbPath);
