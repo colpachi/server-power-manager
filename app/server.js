@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const scheduleRoutes = require('./routes/schedule');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
+const cron = require('./cron');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -32,4 +33,5 @@ app.use('/schedule', scheduleRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  cron.rescheduleTasks();
 });
