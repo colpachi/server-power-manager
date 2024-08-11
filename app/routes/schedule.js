@@ -12,7 +12,6 @@ router.post('/', async (req, res) => {
     return res.status(400).json({ error: "Please fill all fields." });
   }
 
-  // Realiza o ping para verificar a conectividade
   try {
     const isAlive = await ping.promise.probe(server_ip);
     if (!isAlive.alive) {

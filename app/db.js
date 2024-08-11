@@ -1,10 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
-// Certifique-se de que o caminho está correto e o diretório 'data' existe
 const dbPath = path.join(__dirname, 'data', 'schedule.db');
 
-// Abre o banco de dados a partir de um arquivo
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
     console.error('Erro ao abrir o banco de dados', err);
@@ -18,7 +16,7 @@ db.serialize(() => {
 });
 
 exports.insertSchedule = async (id, server_name, server_ip, username, password, power_on_time, power_off_time) => {
-  // Verifica primeiro se o registro com o ID fornecido já existe
+
   db.get("SELECT id FROM schedule WHERE id = ?", [id], (err, row) => {
     if (err) {
       console.error("Erro ao verificar agendamento existente:", err.message);
@@ -26,8 +24,7 @@ exports.insertSchedule = async (id, server_name, server_ip, username, password, 
     }
 
     if (row) {
-      // Se encontrar o registro, atualiza
-      const updateStmt = db.prepare('UPDATE schedule SET server_name = ?, server_ip = ?, username = ?, password = ?, power_on_time = ?, power_off_time = ? WHERE id = ?');
+         const updateStmt = db.prepare('UPDATE schedule SET server_name = ?, server_ip = ?, username = ?, password = ?, power_on_time = ?, power_off_time = ? WHERE id = ?');
       updateStmt.run(server_name, server_ip, username, password, power_on_time, power_off_time, id, function(err) {
         if (err) {
           console.error('Erro ao atualizar agendamento:', err.message);
@@ -37,7 +34,6 @@ exports.insertSchedule = async (id, server_name, server_ip, username, password, 
         updateStmt.finalize();
       });
     } else {
-      // Se não encontrar, insere um novo
       const insertStmt = db.prepare('INSERT INTO schedule (id, server_name, server_ip, username, password, power_on_time, power_off_time) VALUES (?, ?, ?, ?, ?, ?, ?)');
       insertStmt.run(id, server_name, server_ip, username, password, power_on_time, power_off_time, function(err) {
         if (err) {
