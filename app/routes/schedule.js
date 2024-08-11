@@ -39,4 +39,21 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.delete('/delete/:id', async (req, res) => {
+  const scheduleId = req.params.id;
+
+  try {
+    const result = await db.deleteSchedule(scheduleId);
+
+    if (result) {
+      res.json({ success: true, message: "Agendamento deletado com sucesso." });
+    } else {
+      res.status(404).json({ success: false, message: "Agendamento não encontrado." });
+    }
+  } catch (err) {
+    console.error("Erro ao deletar agendamento:", err);
+    res.status(500).json({ success: false, message: "Erro interno ao deletar agendamento." });
+  }
+});
+
 module.exports = router;

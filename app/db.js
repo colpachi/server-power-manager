@@ -56,3 +56,15 @@ exports.getSchedules = (callback) => {
     }
   });
 };
+
+exports.deleteSchedule = (id) => {
+  return new Promise((resolve, reject) => {
+    db.run('DELETE FROM schedule WHERE id = ?', [id], function(err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(this.changes > 0); // Retorna true se algum registro foi deletado
+      }
+    });
+  });
+};
