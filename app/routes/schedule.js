@@ -5,7 +5,7 @@ const { schedulePowerOn, schedulePowerOff } = require('../scheduler');
 const ping = require('ping');
 
 router.post('/', async (req, res) => {
-  const { id , server_name, server_ip, username, password, power_on_time, power_off_time } = req.body;
+  const { id , server_name, server_ip, username, password, power_on_time, power_off_time, days_of_week } = req.body;
 
   if (!server_ip || !username || !password) {
     console.error('Dados faltando na requisição:', req.body);
@@ -21,15 +21,15 @@ router.post('/', async (req, res) => {
 
     console.log(`Host ${server_ip} alcançado`);
 
-    db.insertSchedule(id , server_name, server_ip, username, password, power_on_time, power_off_time);
+    db.insertSchedule(id , server_name, server_ip, username, password, power_on_time, power_off_time, days_of_week);
 
     if (power_on_time) {
       console.log(`Agendando power on para ${server_ip} às ${power_on_time}`);
-      schedulePowerOn(server_ip, username, password, power_on_time);
+      schedulePowerOn(server_ip, username, password, power_on_time, days_of_week);
     }
     if (power_off_time) {
       console.log(`Agendando power off para ${server_ip} às ${power_off_time}`);
-      schedulePowerOff(server_ip, username, password, power_off_time);
+      schedulePowerOff(server_ip, username, password, power_off_time, days_of_week);
     }
 
     res.json({ success: true, message: "Host connected" });
@@ -53,6 +53,27 @@ router.delete('/delete/:id', async (req, res) => {
   } catch (err) {
     console.error("Erro ao deletar agendamento:", err);
     res.status(500).json({ success: false, message: "Erro interno ao deletar agendamento." });
+  }
+});
+
+router.put('/:id/status', async (req, res) => {
+  const scheduleId = req.params.id;
+  const { status } = req.body;
+
+  if (!status || !['active', 'paused'].includes(status)) {
+    return res.status(400).json({ success: false, message: "Status inválido." });
+  }
+
+  try {
+    const result = await db.setScheduleStatus(scheduleId, status);
+    if (result) {
+      res.json({ success: true, message: `Schedule ${status === 'paused' ? 'pausado' : 'reativado'}.` });
+    } else {
+      res.status(404).json({ success: false, message: "Agendamento não encontrado." });
+    }
+  } catch (err) {
+    console.error("Erro ao atualizar status:", err);
+    res.status(500).json({ success: false, message: "Erro interno." });
   }
 });
 

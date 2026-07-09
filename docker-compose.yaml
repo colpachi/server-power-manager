@@ -3,7 +3,7 @@ services:
   server-sched:
     build: .
     ports:
-      - "5000:5000"
+      - "7050:7050"
     volumes:
       - ./app/data:/app/data 
       

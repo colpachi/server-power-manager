@@ -48,11 +48,28 @@
         .clear-btn{
             background-color: rgb(4, 192, 167);
         }
+        .pause-btn {
+            background-color: rgb(230, 150, 20);
+        }
+        .pause-btn.paused {
+            background-color: rgb(180, 180, 180);
+        }
         .status-message {
             color: blue; 
             font-weight: bold;
             width: 150px;
             height: 25px;
+        }
+        .weekdays {
+            display: flex;
+            gap: 4px;
+            margin-top: 5px;
+            font-size: 11px;
+            align-items: center;
+        }
+        .weekdays label {
+            cursor: pointer;
+            user-select: none;
         }
     </style>
     <script src="jquery.min.js"></script>
@@ -74,6 +91,16 @@
             <input type="time" placeholder="Power Off Time" name="powerOffTime1" id="powerOffTime1" autocomplete="off">
             <button id="start-1" onclick="toggleServer(this.parentElement, 1, this)">Start</button>
             <button id="clear-1" class="clear-btn" onclick="clearForm(this.parentElement, 1)">Clear</button>
+            <button id="pause-1" class="pause-btn" onclick="togglePause(1)">Pause</button>
+            <div class="weekdays" id="weekdays-1">
+                <label><input type="checkbox" value="1" title="Segunda">S</label>
+                <label><input type="checkbox" value="2" title="Terça">T</label>
+                <label><input type="checkbox" value="3" title="Quarta">Q</label>
+                <label><input type="checkbox" value="4" title="Quinta">Q</label>
+                <label><input type="checkbox" value="5" title="Sexta">S</label>
+                <label><input type="checkbox" value="6" title="Sábado">S</label>
+                <label><input type="checkbox" value="0" title="Domingo">D</label>
+            </div>
         </div>
 
         <div class="server" id="server-2">
@@ -86,6 +113,16 @@
             <input type="time" placeholder="Power Off Time" name="powerOffTime2" id="powerOffTime2" autocomplete="off">
             <button id="start-2" onclick="toggleServer(this.parentElement, 2, this)">Start</button>
             <button id="clear-2" class="clear-btn" onclick="clearForm(this.parentElement, 2)">Clear</button>
+            <button id="pause-2" class="pause-btn" onclick="togglePause(2)">Pause</button>
+            <div class="weekdays" id="weekdays-2">
+                <label><input type="checkbox" value="1" title="Segunda">S</label>
+                <label><input type="checkbox" value="2" title="Terça">T</label>
+                <label><input type="checkbox" value="3" title="Quarta">Q</label>
+                <label><input type="checkbox" value="4" title="Quinta">Q</label>
+                <label><input type="checkbox" value="5" title="Sexta">S</label>
+                <label><input type="checkbox" value="6" title="Sábado">S</label>
+                <label><input type="checkbox" value="0" title="Domingo">D</label>
+            </div>
         </div>
 
         <div class="server" id="server-3">
@@ -98,6 +135,16 @@
             <input type="time" placeholder="Power Off Time" name="powerOffTime3" id="powerOffTime3" autocomplete="off">
             <button id="start-3" onclick="toggleServer(this.parentElement, 3, this)">Start</button>
             <button id="clear-3" class="clear-btn" onclick="clearForm(this.parentElement, 3)">Clear</button>
+            <button id="pause-3" class="pause-btn" onclick="togglePause(3)">Pause</button>
+            <div class="weekdays" id="weekdays-3">
+                <label><input type="checkbox" value="1" title="Segunda">S</label>
+                <label><input type="checkbox" value="2" title="Terça">T</label>
+                <label><input type="checkbox" value="3" title="Quarta">Q</label>
+                <label><input type="checkbox" value="4" title="Quinta">Q</label>
+                <label><input type="checkbox" value="5" title="Sexta">S</label>
+                <label><input type="checkbox" value="6" title="Sábado">S</label>
+                <label><input type="checkbox" value="0" title="Domingo">D</label>
+            </div>
         </div>
 
         <div class="server" id="server-4">
@@ -110,6 +157,16 @@
             <input type="time" placeholder="Power Off Time" name="powerOffTime4" id="powerOffTime4" autocomplete="off">
             <button id="start-4" onclick="toggleServer(this.parentElement, 4, this)">Start</button>
             <button id="clear-4" class="clear-btn" onclick="clearForm(this.parentElement, 4)">Clear</button>
+            <button id="pause-4" class="pause-btn" onclick="togglePause(4)">Pause</button>
+            <div class="weekdays" id="weekdays-4">
+                <label><input type="checkbox" value="1" title="Segunda">S</label>
+                <label><input type="checkbox" value="2" title="Terça">T</label>
+                <label><input type="checkbox" value="3" title="Quarta">Q</label>
+                <label><input type="checkbox" value="4" title="Quinta">Q</label>
+                <label><input type="checkbox" value="5" title="Sexta">S</label>
+                <label><input type="checkbox" value="6" title="Sábado">S</label>
+                <label><input type="checkbox" value="0" title="Domingo">D</label>
+            </div>
         </div>
 
         <div class="server" id="server-5">
@@ -122,6 +179,16 @@
             <input type="time" placeholder="Power Off Time" name="powerOffTime5" id="powerOffTime5" autocomplete="off">
             <button id="start-5" onclick="toggleServer(this.parentElement, 5, this)">Start</button>
             <button id="clear-5" class="clear-btn" onclick="clearForm(this.parentElement, 5)">Clear</button>
+            <button id="pause-5" class="pause-btn" onclick="togglePause(5)">Pause</button>
+            <div class="weekdays" id="weekdays-5">
+                <label><input type="checkbox" value="1" title="Segunda">S</label>
+                <label><input type="checkbox" value="2" title="Terça">T</label>
+                <label><input type="checkbox" value="3" title="Quarta">Q</label>
+                <label><input type="checkbox" value="4" title="Quinta">Q</label>
+                <label><input type="checkbox" value="5" title="Sexta">S</label>
+                <label><input type="checkbox" value="6" title="Sábado">S</label>
+                <label><input type="checkbox" value="0" title="Domingo">D</label>
+            </div>
         </div>
 
         <div class="server" id="server-6">
@@ -134,6 +201,16 @@
             <input type="time" placeholder="Power Off Time" name="powerOffTime6" id="powerOffTime6" autocomplete="off">
             <button id="start-6" onclick="toggleServer(this.parentElement, 6, this)">Start</button>
             <button id="clear-6" class="clear-btn" onclick="clearForm(this.parentElement, 6)">Clear</button>
+            <button id="pause-6" class="pause-btn" onclick="togglePause(6)">Pause</button>
+            <div class="weekdays" id="weekdays-6">
+                <label><input type="checkbox" value="1" title="Segunda">S</label>
+                <label><input type="checkbox" value="2" title="Terça">T</label>
+                <label><input type="checkbox" value="3" title="Quarta">Q</label>
+                <label><input type="checkbox" value="4" title="Quinta">Q</label>
+                <label><input type="checkbox" value="5" title="Sexta">S</label>
+                <label><input type="checkbox" value="6" title="Sábado">S</label>
+                <label><input type="checkbox" value="0" title="Domingo">D</label>
+            </div>
         </div>
 
         <div class="server" id="server-7">
@@ -146,6 +223,16 @@
             <input type="time" placeholder="Power Off Time" name="powerOffTime7" id="powerOffTime7" autocomplete="off">
             <button id="start-7" onclick="toggleServer(this.parentElement, 7, this)">Start</button>
             <button id="clear-7" class="clear-btn" onclick="clearForm(this.parentElement, 7)">Clear</button>
+            <button id="pause-7" class="pause-btn" onclick="togglePause(7)">Pause</button>
+            <div class="weekdays" id="weekdays-7">
+                <label><input type="checkbox" value="1" title="Segunda">S</label>
+                <label><input type="checkbox" value="2" title="Terça">T</label>
+                <label><input type="checkbox" value="3" title="Quarta">Q</label>
+                <label><input type="checkbox" value="4" title="Quinta">Q</label>
+                <label><input type="checkbox" value="5" title="Sexta">S</label>
+                <label><input type="checkbox" value="6" title="Sábado">S</label>
+                <label><input type="checkbox" value="0" title="Domingo">D</label>
+            </div>
         </div>
 
         <div class="server" id="server-8">
@@ -158,6 +245,16 @@
             <input type="time" placeholder="Power Off Time" name="powerOffTime8" id="powerOffTime8" autocomplete="off">
             <button id="start-8" onclick="toggleServer(this.parentElement, 8, this)">Start</button>
             <button id="clear-8" class="clear-btn" onclick="clearForm(this.parentElement, 8)">Clear</button>
+            <button id="pause-8" class="pause-btn" onclick="togglePause(8)">Pause</button>
+            <div class="weekdays" id="weekdays-8">
+                <label><input type="checkbox" value="1" title="Segunda">S</label>
+                <label><input type="checkbox" value="2" title="Terça">T</label>
+                <label><input type="checkbox" value="3" title="Quarta">Q</label>
+                <label><input type="checkbox" value="4" title="Quinta">Q</label>
+                <label><input type="checkbox" value="5" title="Sexta">S</label>
+                <label><input type="checkbox" value="6" title="Sábado">S</label>
+                <label><input type="checkbox" value="0" title="Domingo">D</label>
+            </div>
         </div>
 
         <div class="server" id="server-9">
@@ -170,6 +267,16 @@
             <input type="time" placeholder="Power Off Time" name="powerOffTime9" id="powerOffTime9" autocomplete="off">
             <button id="start-9" onclick="toggleServer(this.parentElement, 9, this)">Start</button>
             <button id="clear-9" class="clear-btn" onclick="clearForm(this.parentElement, 9)">Clear</button>
+            <button id="pause-9" class="pause-btn" onclick="togglePause(9)">Pause</button>
+            <div class="weekdays" id="weekdays-9">
+                <label><input type="checkbox" value="1" title="Segunda">S</label>
+                <label><input type="checkbox" value="2" title="Terça">T</label>
+                <label><input type="checkbox" value="3" title="Quarta">Q</label>
+                <label><input type="checkbox" value="4" title="Quinta">Q</label>
+                <label><input type="checkbox" value="5" title="Sexta">S</label>
+                <label><input type="checkbox" value="6" title="Sábado">S</label>
+                <label><input type="checkbox" value="0" title="Domingo">D</label>
+            </div>
         </div>
 
     </div>
@@ -187,6 +294,19 @@
             const startButton = document.getElementById(`start-${serverNumber}`);
             startButton.value = "Start";
             startButton.style.backgroundColor = '#0a06e9';
+
+            // Uncheck all weekdays
+            const weekdaysDiv1 = document.getElementById(`weekdays-${serverNumber}`);
+            if (weekdaysDiv1) {
+                weekdaysDiv1.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            }
+
+            // Reset pause button
+            const pauseBtn1 = document.getElementById(`pause-${serverNumber}`);
+            if (pauseBtn1) {
+                pauseBtn1.textContent = 'Pause';
+                pauseBtn1.classList.remove('paused');
+            }
 
             
             if (serverNameInput) serverNameInput.value = "";
@@ -230,6 +350,19 @@
         serverDiv.querySelector("input[type='time'][name*='PowerOnTime']").value = "";
         serverDiv.querySelector("input[type='time'][name*='PowerOffTime']").value = "";
         serverDiv.querySelector(".status-message").textContent = "";
+
+        // Uncheck all weekdays
+        const weekdaysDiv2 = serverDiv.querySelector('.weekdays');
+        if (weekdaysDiv2) {
+            weekdaysDiv2.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+        }
+
+        // Reset pause button
+        const pauseBtn2 = serverDiv.querySelector('.pause-btn');
+        if (pauseBtn2) {
+            pauseBtn2.textContent = 'Pause';
+            pauseBtn2.classList.remove('paused');
+        }
 
         try {
             const response = await fetch(`/schedule/delete/${serverNumber}`, {
@@ -285,12 +418,34 @@
                             if (powerOnTimeInput) powerOnTimeInput.value = schedule.power_on_time || "";
                             if (powerOffTimeInput) powerOffTimeInput.value = schedule.power_off_time || "";
 
+                            // Restore weekdays checkboxes
+                            if (schedule.days_of_week) {
+                                const wdDiv = document.getElementById(`weekdays-${serverNumber}`);
+                                if (wdDiv) {
+                                    const days = schedule.days_of_week.split(',');
+                                    wdDiv.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                                        cb.checked = days.includes(cb.value);
+                                    });
+                                }
+                            }
 
 
                             // Update button state based on schedule status
                             if (schedule.status === 'active') {
                                 startButton.textContent = 'Running';
                                 startButton.style.backgroundColor = '#0acda2';
+                            }
+
+                            // Restore pause button state
+                            const pauseBtn = document.getElementById(`pause-${serverNumber}`);
+                            if (pauseBtn) {
+                                if (schedule.status === 'paused') {
+                                    pauseBtn.textContent = 'Resume';
+                                    pauseBtn.classList.add('paused');
+                                } else {
+                                    pauseBtn.textContent = 'Pause';
+                                    pauseBtn.classList.remove('paused');
+                                }
                             }
 
                             
@@ -311,6 +466,13 @@
             const powerOffTime = document.getElementById(`powerOffTime${serverNumber}`).value;
             const statusMessageDiv = serverDiv.querySelector(".status-message");
 
+            // Collect selected weekdays
+            const weekdaysDiv = document.getElementById(`weekdays-${serverNumber}`);
+            let days_of_week = '';
+            if (weekdaysDiv) {
+                const checked = weekdaysDiv.querySelectorAll('input[type="checkbox"]:checked');
+                days_of_week = Array.from(checked).map(cb => cb.value).join(',');
+            }
 
             if (!serverName || !serverIp || !username || !password || (!powerOnTime && !powerOffTime)) {
                 statusMessageDiv.textContent = "Please fill all fields.";
@@ -325,6 +487,7 @@
                 password: password,
                 power_on_time: powerOnTime,
                 power_off_time: powerOffTime,
+                days_of_week: days_of_week,
             };
 
             console.log("Enviando dados:", serverData);
@@ -349,10 +512,45 @@
                 button.textContent = isStarting ? 'Running' : 'Start';
                 button.style.backgroundColor = isStarting ? '#0acda2' : '#0a06e9';
                 statusMessageDiv.textContent = isStarting ? "Host acessível" : "";
+
+                // Reset pause state when starting
+                if (isStarting) {
+                    const pauseBtn3 = document.getElementById(`pause-${serverNumber}`);
+                    if (pauseBtn3) {
+                        pauseBtn3.textContent = 'Pause';
+                        pauseBtn3.classList.remove('paused');
+                    }
+                }
             } catch (error) {
                 console.error("Erro ao realizar ação:", error);
                 button.textContent = 'Start';
                 button.style.backgroundColor = '#0a06e9';
+            }
+        }
+
+        async function togglePause(serverNumber) {
+            const pauseBtn = document.getElementById(`pause-${serverNumber}`);
+            const isPaused = pauseBtn.classList.contains('paused');
+            const newStatus = isPaused ? 'active' : 'paused';
+
+            try {
+                const response = await fetch(`/schedule/${serverNumber}/status`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: newStatus }),
+                });
+                const data = await response.json();
+                if (data.success) {
+                    if (newStatus === 'paused') {
+                        pauseBtn.textContent = 'Resume';
+                        pauseBtn.classList.add('paused');
+                    } else {
+                        pauseBtn.textContent = 'Pause';
+                        pauseBtn.classList.remove('paused');
+                    }
+                }
+            } catch (error) {
+                console.error('Erro ao alterar status:', error);
             }
         }
     </script>

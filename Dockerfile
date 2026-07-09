@@ -18,7 +18,7 @@ COPY app/ .
 COPY views/ ../views
 
 # Expõe a porta que a aplicação vai usar
-EXPOSE 5000
+EXPOSE 7050
 
 # Comando para rodar a aplicação
 CMD ["node", "server.js"]

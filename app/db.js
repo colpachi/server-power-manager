@@ -21,12 +21,16 @@ db.serialize(() => {
     password TEXT,
     power_on_time TEXT,
     power_off_time TEXT,
+    days_of_week TEXT DEFAULT '',
     status TEXT DEFAULT 'active'  -- Adiciona coluna status com valor padrão 'active'
   )`);
 });
 
+// Adiciona coluna days_of_week se não existir (migration)
+db.run(`ALTER TABLE schedule ADD COLUMN days_of_week TEXT DEFAULT ''`, () => {});
+
 // Inserir ou atualizar um agendamento
-exports.insertSchedule = async (id, server_name, server_ip, username, password, power_on_time, power_off_time) => {
+exports.insertSchedule = async (id, server_name, server_ip, username, password, power_on_time, power_off_time, days_of_week) => {
   db.get("SELECT id FROM schedule WHERE id = ?", [id], (err, row) => {
     if (err) {
       console.error("Erro ao verificar agendamento existente:", err.message);
@@ -34,8 +38,8 @@ exports.insertSchedule = async (id, server_name, server_ip, username, password, 
     }
 
     if (row) {
-      const updateStmt = db.prepare('UPDATE schedule SET server_name = ?, server_ip = ?, username = ?, password = ?, power_on_time = ?, power_off_time = ?, status = ? WHERE id = ?');
-      updateStmt.run(server_name, server_ip, username, password, power_on_time, power_off_time, 'active', id, function(err) {
+      const updateStmt = db.prepare('UPDATE schedule SET server_name = ?, server_ip = ?, username = ?, password = ?, power_on_time = ?, power_off_time = ?, days_of_week = ?, status = ? WHERE id = ?');
+      updateStmt.run(server_name, server_ip, username, password, power_on_time, power_off_time, days_of_week, 'active', id, function(err) {
         if (err) {
           console.error('Erro ao atualizar agendamento:', err.message);
         } else {
@@ -44,8 +48,8 @@ exports.insertSchedule = async (id, server_name, server_ip, username, password, 
         updateStmt.finalize();
       });
     } else {
-      const insertStmt = db.prepare('INSERT INTO schedule (id, server_name, server_ip, username, password, power_on_time, power_off_time, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-      insertStmt.run(id, server_name, server_ip, username, password, power_on_time, power_off_time, 'active', function(err) {
+      const insertStmt = db.prepare('INSERT INTO schedule (id, server_name, server_ip, username, password, power_on_time, power_off_time, days_of_week, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
+      insertStmt.run(id, server_name, server_ip, username, password, power_on_time, power_off_time, days_of_week, 'active', function(err) {
         if (err) {
           console.error('Erro ao inserir agendamento:', err.message);
         } else {
@@ -78,6 +82,32 @@ exports.deleteSchedule = (id) => {
         reject(err);
       } else {
         resolve(this.changes > 0); // Retorna true se algum registro foi deletado
+      }
+    });
+  });
+};
+
+// Atualizar status (active/paused)
+exports.setScheduleStatus = (id, status) => {
+  return new Promise((resolve, reject) => {
+    db.run('UPDATE schedule SET status = ? WHERE id = ?', [status, id], function(err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(this.changes > 0);
+      }
+    });
+  });
+};
+
+// Verifica se o schedule está pausado pelo server_ip
+exports.isSchedulePaused = (server_ip) => {
+  return new Promise((resolve, reject) => {
+    db.get('SELECT status FROM schedule WHERE server_ip = ?', [server_ip], (err, row) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(row && row.status === 'paused');
       }
     });
   });
