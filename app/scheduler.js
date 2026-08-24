@@ -1,24 +1,6 @@
 const cron = require('node-cron');
-const exec = require('child_process').exec;
 const db = require('./db');
-
-function ipmiCommand(server_ip, username, password, command) {
-  const cmd = `ipmitool -I lanplus -H ${server_ip} -U ${username} -P ${password} ${command}`;
-  
-  console.log(`Preparando para executar comando: ${command}`);
-
-  exec(cmd, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Erro na execução do comando: ${error.message}`);
-      return;
-    }
-    console.log(`Comando executado com sucesso: ${command}`);
-    console.log(`Saída: ${stdout}`);
-    if (stderr) {
-      console.error(`Erro padrão: ${stderr}`);
-    }
-  });
-}
+const { ipmiCommand } = require('./ipmi');
 
 async function executeIfNotPaused(server_ip, username, password, command) {
   const paused = await db.isSchedulePaused(server_ip);

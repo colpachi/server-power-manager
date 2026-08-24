@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const scheduleRoutes = require('./routes/schedule');
+const powerRoutes = require('./routes/power');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const cron = require('./cron');
@@ -30,6 +31,7 @@ app.get('/schedules', (req, res) => {
 });
 
 app.use('/schedule', scheduleRoutes);
+app.use('/power', powerRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

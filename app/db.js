@@ -100,6 +100,47 @@ exports.setScheduleStatus = (id, status) => {
   });
 };
 
+// Resolve credenciais de um servidor pelo nome (usado por /power/*)
+//
+// A comparação é case-insensitive e ignora espaços nas pontas. O nome é digitado
+// à mão no cadastro de agendamento, mas é usado como CHAVE por serviços externos
+// (o deploy gateway do cmd-flow pede "t630"; o cadastro gravou "T630"). Com o `=`
+// cru do SQLite — case-sensitive, pois a coluna não tem COLLATE NOCASE — essa
+// diferença de caixa fazia o /power/status devolver 400 "Provide server..." como
+// se o parâmetro estivesse faltando, derrubando o deploy inteiro.
+exports.getServerByName = (server_name) => {
+  return new Promise((resolve, reject) => {
+    db.get(
+      'SELECT server_name, server_ip, username, password FROM schedule WHERE LOWER(TRIM(server_name)) = LOWER(TRIM(?))',
+      [server_name],
+      (err, row) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(row || null);
+        }
+      }
+    );
+  });
+};
+
+// Nomes de servidores registrados, para mensagens de erro acionáveis.
+exports.listServerNames = () => {
+  return new Promise((resolve, reject) => {
+    db.all(
+      'SELECT DISTINCT server_name FROM schedule WHERE server_name IS NOT NULL AND TRIM(server_name) <> \'\'',
+      [],
+      (err, rows) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve((rows || []).map((r) => r.server_name));
+        }
+      }
+    );
+  });
+};
+
 // Verifica se o schedule está pausado pelo server_ip
 exports.isSchedulePaused = (server_ip) => {
   return new Promise((resolve, reject) => {

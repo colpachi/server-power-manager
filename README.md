@@ -84,6 +84,31 @@ After accessing the application, you will be able to:
 - Fill in the server details, including name, IP, username, password, and times for powering on and off.
 - Save the settings, which will be persisted in the SQLite database.
 
+## On-demand Power API
+
+Besides the scheduled power on/off, SPM exposes a direct HTTP API (consumed by cmd-flow-backend
+to wake the dev-server VM when there is pending backlog work):
+
+```
+GET  /power/status?server=<name>          -> { "status": "on" | "off" | "unknown" }
+POST /power/on   { "server": "<name>" }   -> { "success": true } | { "already_on": true }
+POST /power/off  { "server": "<name>" }   -> { "success": true }
+```
+
+`server` must match a `server_name` already registered via `/schedule`. Alternatively, pass
+`server_ip`, `username` and `password` directly in the body (or query string for `GET`) instead
+of `server`.
+
+All three routes require the header `X-SPM-Token: <token>`, validated against the `SPM_API_TOKEN`
+environment variable. Set it before starting the server:
+
+```bash
+SPM_API_TOKEN=<a long random token> npm start
+```
+
+`POST /power/on` is idempotent: it checks the current power status first and returns
+`{ "already_on": true }` without sending another IPMI command if the server is already on.
+
 ## Contributing
 
 Contributions are always welcome. To contribute to the project, fork the repository, create a branch for your modifications, and submit a pull request.
